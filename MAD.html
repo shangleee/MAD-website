@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAD: Meal At Doorstep</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff7e6;
+        }
+
+        header {
+            text-align: center;
+            padding: 25px 15px;
+            background-color: #4e342e;
+            color: white;
+        }
+
+        header img {
+            width: 200px;
+            height: auto;
+        }
+
+        header h1 {
+            margin: 5px 0;
+            font-size: 1.5rem;
+        }
+
+        header p {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ffcc80;
+        }
+        .review-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .review-section h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-form input, .review-form textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        .review-form button {
+            padding: 10px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .review-form button:hover {
+            background-color: #0288d1;
+        }
+
+        .review-list {
+            margin-top: 40px;
+        }
+
+        .review-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-item h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #00bcd4;
+        }
+
+        .review-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .review-item .rating {
+            font-size: 1.2em;
+            color: #ff9800;
+        }
+
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            padding: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category {
+            padding: 20px;
+            border-radius: 15px;
+            background: linear-gradient(to bottom, #fff, #ffe4b5);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .category h3 {
+            margin: 10px 0;
+            font-size: 1.5rem;
+            color: #4e342e;
+        }
+
+        .category p {
+            font-size: 1rem;
+            color: #6d4c41;
+        }
+
+        .category a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #4e342e;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .category a:hover {
+            background-color: #6d4c41;
+        }
+         nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0288d1;
+            padding: 12px 0;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            padding: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #00bcd4;
+            color: #0288d1;
+            transform: translateY(-5px);
+        }
+
+        /* Categories Section Layout */
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .category-card h3 {
+            margin-top: 20px;
+            font-size: 1.8em;
+            color: #00bcd4;
+            font-weight: 700;
+        }
+         nav a {
+                font-size: 1.1em;
+                margin: 0 15px;
+            }
+
+            .category-card {
+                padding: 20px;
+            }
+
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+         nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .review-section {
+            margin-top: 50px;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .review-section h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-form input, .review-form textarea {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+        }
+
+        .review-form button {
+            padding: 10px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .review-form button:hover {
+            background-color: #0288d1;
+        }
+
+        .review-list {
+            margin-top: 40px;
+        }
+
+        .review-item {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .review-item:last-child {
+            border-bottom: none;
+        }
+
+        .review-item h3 {
+            margin: 0;
+            font-size: 1.5em;
+            color: #00bcd4;
+        }
+
+        .review-item p {
+            font-size: 1em;
+            color: #555;
+        }
+
+        .review-item .rating {
+            font-size: 1.2em;
+            color: #ff9800;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="C:/Users/vaibh/OneDrive/Pictures/Screenshots/MAD.png" alt="MAD Logo">
+        <h1>Welcome to MAD: Meal At Doorstep</h1>
+        <h3>Authenticity Is Our Priority</h3>
+        <p>Taste That Matters!</p>
+    </header>
+    <nav>
+        <a href="about.html">About Us</a>
+        <a href="gujarati.html">Gujarati</a>
+        <a href="haryanvi.html">Haryanvi</a>
+        <a href="rajasthani.html">Rajasthani</a>
+        <a href="italian.html">Italian</a>
+        <a href="chinese.html">Chinese</a>
+        <a href="japanese.html">Japanese</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="review.html">Review</a>
+    </nav>
+
+    <main>
+        <section class="categories">
+            <div class="category">
+                <h3>Gujarati</h3>
+                <p>Discover the rich flavors of Gujarat.</p>
+                <a href="gujarati.html">Explore Gujarati Menu</a>
+            </div>
+            <div class="category">
+                <h3>Haryanvi</h3>
+                <p>Traditional dishes from the heart of Haryana.</p>
+                <a href="haryanvi.html">Explore Haryanvi Menu</a>
+            </div>
+            <div class="category">
+                <h3>Rajasthani</h3>
+                <p>Savor the spices of Rajasthan.</p>
+                <a href="rajasthani.html">Explore Rajasthani Menu</a>
+            </div>
+            <div class="category">
+                <h3>Italian</h3>
+                <p>Indulge in authentic Italian pasta and pizza.</p>
+                <a href="italian.html">Explore Italian Menu</a>
+            </div>
+            <div class="category">
+                <h3>Chinese</h3>
+                <p>Experience bold and tangy Chinese dishes.</p>
+                <a href="chinese.html">Explore Chinese Menu</a>
+            </div>
+            <div class="category">
+                <h3>Japanese</h3>
+                <p>Enjoy sushi, ramen, and other delicacies.</p>
+                <a href="japanese.html">Explore Japanese Menu</a>
+            </div>
+            <div class="category">
+                <h3>French</h3>
+                <p>Treat yourself to exquisite French pastries and meals.</p>
+                <a href="french.html">Explore French Menu</a>
+            </div>
+            <div class="category">
+                <h3>Punjabi</h3>
+                <p>Spice up your meal with Punjabi classics.</p>
+                <a href="punjabi.html">Explore Punjabi Menu</a>
+            </div>
+            <div class="category">
+                <h3>South Indian</h3>
+                <p>Relish dosa, idli, and spicy curries.</p>
+                <a href="south indian.html">Explore South Indian Menu</a>
+            </div>
+            <div class="category">
+                <h3>Maharashtrian</h3>
+                <p>Try the famous vada pav and more!</p>
+                <a href="maharashtrian.html">Explore Maharashtrian Menu</a>
+            </div>
+            <div class="category">
+                <h3>Mexican</h3>
+                <p>Delight in tacos, burritos, and nachos.</p>
+                <a href="mexican.html">Explore Mexican Menu</a>
+            </div>
+            <div class="category">
+                <h3>All Over the World</h3>
+                <p>A global feast awaits!</p>
+                <a href="global.html">Explore All Over The World Menu</a>
+            </div>
+            <div class="category">
+                <h3>About Us</h3>
+                <p>Details</p>
+               <a href="about.html">Learn more About Us</a>
+            </div>
+        </section>
+<main>
+</main>
+ <div class="review-section">
+        <h2>Submit Your Review</h2>
+        <form id="review-form" class="review-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <textarea id="review-text" rows="4" placeholder="Write your review..." required></textarea>
+            <div>
+                <label for="rating">Rating:</label>
+                <select id="rating" required>
+                    <option value="1">1 Star</option>
+                    <option value="2">2 Stars</option>
+                    <option value="3">3 Stars</option>
+                    <option value="4">4 Stars</option>
+                    <option value="5">5 Stars</option>
+                </select>
+            </div>
+            <button type="submit">Submit Review</button>
+        </form>
+
+        <!-- Display Reviews -->
+        <div id="review-list" class="review-list">
+            <!-- Reviews will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // Function to handle review submission
+        document.getElementById('review-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get input values
+            const name = document.getElementById('name').value;
+            const reviewText = document.getElementById('review-text').value;
+            const rating = document.getElementById('rating').value;
+
+            // Create review item
+            const reviewItem = document.createElement('div');
+            reviewItem.classList.add('review-item');
+
+            // Create review content
+            reviewItem.innerHTML = `
+                <h3>${name}</h3>
+                <p>${reviewText}</p>
+                <div class="rating">Rating: ${'★'.repeat(rating)}</div>
+            `;
+
+            // Append the review item to the review list
+            document.getElementById('review-list').appendChild(reviewItem);
+
+            // Reset the form
+            document.getElementById('review-form').reset();
+        });
+    </script>
+
+    </main>
+
+    <footer>
+
+        &copy; 2024 MAD: Meal At Doorstep. All rights reserved.
+    </footer>
+
+</body>
+</html>

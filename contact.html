@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - MAD: Meal At Doorstep</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff7e6;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #4e342e;
+            color: white;
+        }
+
+        header img {
+            width: 150px;
+            height: auto;
+        }
+
+        header h1 {
+            margin: 10px 0;
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-style: italic;
+            font-size: 1.2rem;
+            color: #ffcc80;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #0288d1;
+            padding: 12px 0;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.2em;
+            padding: 10px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #00bcd4;
+            color: #0288d1;
+            transform: translateY(-5px);
+        }
+
+        main {
+            padding: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4e342e;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1.1em;
+        }
+
+        .contact-form button {
+            padding: 10px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: #0288d1;
+        }
+
+        footer {
+            background-color: #4e342e;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <img src="C:/Users/vaibh/OneDrive/Pictures/Screenshots/MAD.png" alt="MAD Logo">
+        <h1>CONTACT US</h1>
+    </header>
+   
+    <main>
+        <div class="contact-form">
+            <h2>Get In Touch</h2>
+            <form id="contact-form">
+                <input type="text" id="name" placeholder="Your Name" required>
+                <input type="email" id="email" placeholder="Your Email" required>
+                <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 MAD: Meal At Doorstep. All rights reserved.
+    </footer>
+
+    <script>
+        // Form submission functionality
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            alert(`Thank you for contacting us, ${name}! We'll get back to you soon.`);
+
+            // Reset the form after submission
+            document.getElementById('contact-form').reset();
+        });
+    </script>
+
+</body>
+</html>
